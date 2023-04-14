@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>D:\Python\PyQt\accounting\design\templates\background\back.png</file>
+  </qresource>
+</RCC>
