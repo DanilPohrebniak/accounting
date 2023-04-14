@@ -23,7 +23,7 @@ class App(QtWidgets.QMainWindow, login.Login):
 
     def cheking(self):
         if self.user.check_user(self.username.text(), self.password.text()):
-            self.main_window = MainWindow()
+            self.main_window = MainWindow(self.username.text())
             self.close()
             self.main_window.show()
         else:
