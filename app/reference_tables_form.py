@@ -6,20 +6,24 @@ from PyQt5 import QtWidgets
 from app.warehouse_create import WarehouseCreate
 from app.units_create import UnitsCreate
 from app.counterparty_create import CounterpartyCreate
+from app.goods_create import GoodsCreate
 
 
 
 class ReferencesShow(QtWidgets.QMainWindow, references_show.Ui_MainWindow):
-    def __init__(self, reference):
+    def __init__(self, reference, login):
         super().__init__()
         self.setupUi(self)
         self.setGeometry(0, 0, 1900, 1080)
         self.setWindowTitle('Accounting')
+        self.login = login
+        self.username.setText(login)
         self.selected_reference = reference
         self.pressing_reference_tables()
         self.pressing_add()
         self.fill_data()
         self.pressing_delete()
+        self.pressing_logout()
 
     def pressing_add(self):
         self.add.clicked.connect(lambda: self.open_reference())
@@ -30,32 +34,43 @@ class ReferencesShow(QtWidgets.QMainWindow, references_show.Ui_MainWindow):
     def pressing_delete(self):
         self.delete_2.clicked.connect(lambda: self.delete_data())
 
+    def pressing_logout(self):
+        self.logout.clicked.connect(lambda: self.open_login_form())
+
+    def open_login_form(self):
+        import main as login_form
+        self.main_window = login_form.App()
+        self.close()
+        self.main_window.show()
+
     def open_reference(self):
         if self.selected_reference == 'Warehouse':
-            self.reference_window = WarehouseCreate()
+            self.reference_window = WarehouseCreate(self.login)
         elif self.selected_reference == 'Units':
-            self.reference_window = UnitsCreate()
+            self.reference_window = UnitsCreate(self.login)
         elif self.selected_reference == 'Counterparty':
-            self.reference_window = CounterpartyCreate()
+            self.reference_window = CounterpartyCreate(self.login)
+        elif self.selected_reference == 'Goods':
+            self.reference_window = GoodsCreate(self.login)
 
         self.close()
         self.reference_window.show()
 
     def open_reference_tables(self):
         import app.reference as reference_tables
-        self.reference_pages = reference_tables.ReferencesPage()
+        self.reference_pages = reference_tables.ReferencesPage(self.login)
         self.close()
         self.reference_pages.show()
 
     def fill_data(self):
         if self.selected_reference == 'Warehouse':
             reference_data = db_utils.Warehouse()
-
         elif self.selected_reference == 'Units':
             reference_data = db_utils.Units()
-
         elif self.selected_reference == 'Counterparty':
             reference_data = db_utils.Counterparty()
+        elif self.selected_reference == 'Goods':
+            reference_data = db_utils.Goods()
 
         items_data = reference_data.select_all_records()
         self.reference_tables.setRowCount(len(items_data))
@@ -73,12 +88,12 @@ class ReferencesShow(QtWidgets.QMainWindow, references_show.Ui_MainWindow):
 
         if self.selected_reference == 'Warehouse':
             delete_record = db_utils.Warehouse()
-
         elif self.selected_reference == 'Units':
             delete_record = db_utils.Units()
-
         elif self.selected_reference == 'Counterparty':
             delete_record = db_utils.Counterparty()
+        elif self.selected_reference == 'Goods':
+            delete_record = db_utils.Goods()
 
         delete_record.delete_record(item_id)
         self.fill_data()

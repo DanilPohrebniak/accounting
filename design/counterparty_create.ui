@@ -520,51 +520,6 @@ border-radius: 10px;
           <property name="bottomMargin">
            <number>3</number>
           </property>
-          <item row="2" column="0">
-           <widget class="QFrame" name="separator">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>2</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>2</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(145, 145, 145);</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::Panel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Sunken</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QGroupBox" name="verticalGroupBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>630</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_3"/>
-           </widget>
-          </item>
           <item row="3" column="0">
            <widget class="QGroupBox" name="verticalGroupBox">
             <property name="sizePolicy">
@@ -879,6 +834,25 @@ border-radius: 10px;
             </layout>
            </widget>
           </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="menu">
+            <property name="maximumSize">
+             <size>
+              <width>300</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Century Gothic</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>        Main</string>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="0">
            <widget class="QLabel" name="app_name">
             <property name="sizePolicy">
@@ -922,8 +896,33 @@ border-radius: 10px;
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="menu_list">
+          <item row="2" column="0">
+           <widget class="QFrame" name="separator">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>2</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>2</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(145, 145, 145);</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Panel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QGroupBox" name="verticalGroupBox">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -932,28 +931,14 @@ border-radius: 10px;
             </property>
             <property name="minimumSize">
              <size>
-              <width>300</width>
-              <height>50</height>
+              <width>0</width>
+              <height>630</height>
              </size>
             </property>
-            <property name="maximumSize">
-             <size>
-              <width>300</width>
-              <height>50</height>
-             </size>
+            <property name="styleSheet">
+             <string notr="true"/>
             </property>
-            <property name="font">
-             <font>
-              <family>Century Gothic</family>
-              <pointsize>14</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Menu</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3"/>
            </widget>
           </item>
          </layout>

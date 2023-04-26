@@ -491,7 +491,7 @@ class Ui_MainWindow(object):
         self.sales.setText(_translate("MainWindow", "Sales"))
         self.inventory.setText(_translate("MainWindow", "Inventory"))
         self.reference.setText(_translate("MainWindow", "Reference tables"))
-        self.menu_list.setText(_translate("MainWindow", "Menu"))
+        self.menu_list.setText(_translate("MainWindow", "     Menu"))
         self.app_name.setText(_translate("MainWindow", "Accounting"))
         self.username.setText(_translate("MainWindow", "Admin"))
         self.tasks_label.setText(_translate("MainWindow", "Tasks"))

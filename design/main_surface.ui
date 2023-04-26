@@ -424,7 +424,7 @@ border-radius: 10px;
              </font>
             </property>
             <property name="text">
-             <string>Menu</string>
+             <string>     Menu</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>

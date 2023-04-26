@@ -30,6 +30,7 @@ class UserDB:
         result = self.cursor.fetchone()
         return result[0]
 
+
 class Warehouse:
     def __init__(self, db_name='accounting_db.db'):
         self.conn = sqlite3.connect(db_name)
@@ -52,6 +53,7 @@ class Warehouse:
         self.cursor.execute("DELETE FROM warehouse WHERE id=?", (id,))
         self.conn.commit()
 
+
 class Units:
     def __init__(self, db_name='accounting_db.db'):
         self.conn = sqlite3.connect(db_name)
@@ -65,6 +67,11 @@ class Units:
         except sqlite3.IntegrityError:
             return False
 
+    def get_id(self, name):
+        self.cursor.execute('SELECT id FROM units WHERE name=?', (name,))
+        id = self.cursor.fetchone()[0]
+        return id
+
     def select_all_records(self):
         self.cursor.execute("SELECT id, name FROM units")
         records = self.cursor.fetchall()
@@ -73,6 +80,7 @@ class Units:
     def delete_record(self, id):
         self.cursor.execute("DELETE FROM units WHERE id=?", (id,))
         self.conn.commit()
+
 
 class Counterparty:
     def __init__(self, db_name='accounting_db.db'):
@@ -98,3 +106,25 @@ class Counterparty:
         self.cursor.execute("DELETE FROM counterparty WHERE id=?", (id,))
         self.conn.commit()
 
+
+class Goods:
+    def __init__(self, db_name='accounting_db.db'):
+        self.conn = sqlite3.connect(db_name)
+        self.cursor = self.conn.cursor()
+
+    def add_item(self, name, unit):
+        try:
+            self.cursor.execute('INSERT INTO good (name, unit) VALUES (?, ?)', (name, unit))
+            self.conn.commit()
+            return True
+        except sqlite3.IntegrityError:
+            return False
+
+    def select_all_records(self):
+        self.cursor.execute("SELECT * FROM good")
+        records = self.cursor.fetchall()
+        return records
+
+    def delete_record(self, id):
+        self.cursor.execute("DELETE FROM good WHERE id=?", (id,))
+        self.conn.commit()

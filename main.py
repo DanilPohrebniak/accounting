@@ -2,7 +2,7 @@ import sys
 import forms.login as login
 
 from PyQt5 import QtWidgets
-from app.main_menu import MainWindow
+# from app.main_menu import MainWindow
 
 
 class App(QtWidgets.QMainWindow, login.Login):
@@ -22,8 +22,9 @@ class App(QtWidgets.QMainWindow, login.Login):
         self.cheking()
 
     def cheking(self):
+        import app.main_menu as mw
         if self.user.check_user(self.username.text(), self.password.text()):
-            self.main_window = MainWindow(self.username.text())
+            self.main_window = mw.MainWindow(self.username.text())
             self.close()
             self.main_window.show()
         else:
